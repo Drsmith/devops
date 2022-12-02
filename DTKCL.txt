@@ -126,12 +126,26 @@ printf $(kubectl get secret cd-jenkins -o jsonpath="{.data.jenkins-admin-passwor
 
 
 
-Follow video 
 
-valkyrie-app
+Follow video 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+preview on port 8080
+manage jenkins
+manage credentials
+click on system 
+click global credentials unristricted
+add credentials=>google service account from metadata.
+
+come to jenkins home page
+click on new item
+enter an item name=>valkyrie-app=pipeline
+advanced project options=>pipeline script from scm=>git=>credentials=qwiklabs
+
+enter the name of the item => valkyrie-app
 
 
 gcloud source repos list
+
 
 ==================================================================================================================================================================
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
