@@ -32,7 +32,8 @@ printf $(kubectl get secret cd-jenkins -o jsonpath="{.data.jenkins-admin-passwor
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
  ############ COPY PASSWORD FOR JENKINS NOW ##########################
- 
+ Username:admin
+Password:output of previous command in terminal
  cd sample-app
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 kubectl create ns production
@@ -48,6 +49,22 @@ kubectl get service gceme-frontend -n production
 
 NOW Follow along the video
 
+Jenkins admin => credentials =>stores from parent(global)
+Click Add credentials
+Kind(google service account from metadeta)
+Ok
+Click on new item
+Enter item name=sample-app
+Multibranch pipeline
+Copy project repository from tip 3
+Credentials :project I'd
+Interval 1 min save and apply
+
+[03/12, 8:29 am] `~: Change user mail and username
+[03/12, 8:33 am] `~: Open editor 
+In main.go change version 
+In html.go change color to blue to yellow(in 2 places)
+[03/12, 8:37 am] `~: Refresh Jenkins page to check last task progress
 ====================================================================================================================================================================
 
 git init
