@@ -24,7 +24,7 @@ bigQuery=>create dataset(BigQuery Dataset Name,datalocation=us-multiple regions)
         {"type":"TIMESTAMP","name":"registered"},
         {"type":"FLOAT","name":"latitude"},
         {"type":"FLOAT","name":"longitude"}
-    ]
+   ]
 
 LAB_XXX=>OPEN IN SPLIT TAB=>CREATE TABLE=>CREATE TABLE FROM(google cloud storage)=>paste the csv file link under task1=>for table
 paste the .customers_xx part in bigQuery output table=>enable edit on text=>paste the above code=>click create
