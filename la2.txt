@@ -1,0 +1,108 @@
+gcloud auth list
+
+gcloud config list project
+
+-----------------------------------------------------------------------------------------------------------------------------------
+cloudstorage=>create bucket=>name your bucket(cloud storage bucket name)=>click create
+bigQuery=>create dataset(BigQuery Dataset Name,datalocation=us-multiple regions)
+-----------------------------------------------------------------------------------------------------------------------
+
+#In the comand prompt copy the task 1
+
+#OUTPUT OF TASK1
+
+[
+        {"type":"STRING","name":"guid"},
+        {"type":"BOOLEAN","name":"isActive"},
+        {"type":"STRING","name":"firstname"},
+        {"type":"STRING","name":"surname"},
+        {"type":"STRING","name":"company"},
+        {"type":"STRING","name":"email"},
+        {"type":"STRING","name":"phone"},
+        {"type":"STRING","name":"address"},
+        {"type":"STRING","name":"about"},
+        {"type":"TIMESTAMP","name":"registered"},
+        {"type":"FLOAT","name":"latitude"},
+        {"type":"FLOAT","name":"longitude"}
+    ]
+
+LAB_XXX=>OPEN IN SPLIT TAB=>CREATE TABLE=>CREATE TABLE FROM(google cloud storage)=>paste the csv file link under task1=>for table
+paste the .customers_xx part in bigQuery output table=>enable edit on text=>paste the above code=>click create
+---------------------------------------------------------------------------------------------------------------------------------
+dataflow=>create job from template=>job name(sample)=>regional-endpoint(region)=>data template(process data in bulk batch=>Text Files on Cloud Storage to BigQuery)
+=>fill the required parameters=>run job
+---------------------------------------------------------------------------------------------------------------------------------
+dataproc=>create cluster=>change the regions=>change the config nodes=>create cluster
+=>click on cluster's name=>vm instances=>ssh=>in the ssh prompt paste hdfs dfs -cp gs://cloud-training/gsp323/data.txt /data.txt
+=>click on job=>submit job=>fill the rest=>submit
+---------------------------------------------------------------------------------------------------------------------------------
+open another console in new tab which is required for task 4
+---------------------------------------------------------------------------------------------------------------------------------
+dataprep=>import data=>cloud storage=>paste the csv link under task 3=>click continue=>click on runs.csv=>use in new flow=>
+=>column 10 remove tuples with failure=>column 9 (filter rows=>on column=>contains=>/(^0$|^0\.0$)/=>check on delete matching rows)
+=>click add=>change all the column names=>click run=>click run again
+--------------------------------------------------------------------------------------------------------------------------------
+paste task4 in command prompt=>paste 2nd part of task4=>3rdpart=>4thpart=>5th part(change file name to task4's below lines last part)
+=>same for rest
+---------------------------------------------------------------------------------------------------------------------------------
+Task 1 ::=>>
+
+gsutil cp gs://cloud-training/gsp323/lab.csv .
+
+cat lab.csv
+
+gsutil cp gs://cloud-training/gsp323/lab.schema .
+
+cat lab.schema
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Task 4 :::=>
+
+gcloud iam service-accounts create my-natlang-sa \
+  --display-name "my natural language service account"
+  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+gcloud iam service-accounts keys create ~/key.json \
+  --iam-account my-natlang-sa@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com
+  
+  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ wget https://raw.githubusercontent.com/guys-in-the-cloud/cloud-skill-boosts/main/Challenge-labs/Perform%20Foundational%20Data%2C%20ML%2C%20and%20AI%20Tasks%20in%20Google%20Cloud%3A%20Challenge%20Lab/speech-request.json
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+curl -s -X POST -H "Content-Type: application/json" --data-binary @speech-request.json \ 
+"https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}" > speech.json
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+gsutil cp speech.json gs://$DEVSHELL_PROJECT_ID-marking/<changefilename>
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+gcloud ml language analyze-entities --content="Old Norse texts portray Odin as one-eyed and long-bearded, frequently wielding a spear named Gungnir and wearing a cloak and a broad hat." > language.json
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+gsutil cp language.json gs://$DEVSHELL_PROJECT_ID-marking/<changefilename>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+wget https://github.com/guys-in-the-cloud/cloud-skill-boosts/blob/main/Challenge-labs/Perform%20Foundational%20Data%2C%20ML%2C%20and%20AI%20Tasks%20in%20Google%20Cloud:%20Challenge%20Lab/video-intelligence-request.json
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+curl -s -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer '$(gcloud auth print-access-token)'' \
+    'https://videointelligence.googleapis.com/v1/videos:annotate' \
+    -d @video-intelligence-request.json  > video.json
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    
+ gsutil cp video.json gs://$DEVSHELL_PROJECT_ID-marking/<changefilename>
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
