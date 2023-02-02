@@ -28,7 +28,7 @@ cd marking
 ./step2_v2.sh
 bash ~/marking/step2_v2.sh
 
-
+#copy from cd to docker images=>yes=>image id is obtained=>REPLACE LINE 47 with the image id and copy the next 2 lines and run
 Task 3:-
 
 cd ..
@@ -44,7 +44,7 @@ gcloud auth configure-docker us-central1-docker.pkg.dev
 
 docker images
 
-docker tag 4de6485a1d1f us-central1-docker.pkg.dev/qwiklabs-gcp-03-9236b3f78322/valkyrie-repo/valkyrie-app:v0.0.2
+docker tag Image_ID us-central1-docker.pkg.dev/qwiklabs-gcp-03-9236b3f78322/valkyrie-repo/valkyrie-app:v0.0.2
 
 docker push us-central1-docker.pkg.dev/qwiklabs-gcp-03-9236b3f78322/valkyrie-repo/valkyrie-app:v0.0.2
 
@@ -58,10 +58,23 @@ gcloud container clusters get-credentials valkyrie-dev --zone us-east1-d
 kubectl create -f k8s/deployment.yaml
 kubectl create -f k8s/service.yaml
 
-
-
-
-
+######################################################################################################################################################
+task 1  line 14(near to docker build)    change <Docker Image>:<Tag Name> and make sure there is a space before full stop.
+task 2   line 25(near to docker run )     change <Docker Image>:<Tag Name>
+task 3   line 47 (near to docker tag)      change <Docker Image>:<Tag Name>
+task 3   line 49 (near to docker tag)      change <Docker Image>:<Tag Name>
+task 4   line 55(1st line)                  change <Docker Image>:<Tag Name>
+###################################################################################################################################################
+copy the repository name under task3 inQpage eg valkyrie-repo and paste in the following tasks
+task 3    line37  replace change_repo with repository name copied and make sure there is a space before slash
+task 3    line47 replace REPOSITORY BY copied repository name
+task 3    line49 replace REPOSITORY BY copied repository name
+task 4    line55 replace REPOSITORY BY copied repository name
+##################################################################################################################################################
+copy the project id and paste in the following tasks
+task 3     line47 replace PROJECT_ID by copied project id
+task 3     line49 replace PROJECT_ID by copied project id
+##################################################################################################################################################
 
 
 
