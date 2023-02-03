@@ -74,6 +74,7 @@ task 4    line55 replace REPOSITORY BY copied repository name
 copy the project id and paste in the following tasks
 task 3     line47 replace PROJECT_ID by copied project id
 task 3     line49 replace PROJECT_ID by copied project id
+task4      line55 replace PROJECT_ID by copied project id
 ##################################################################################################################################################
 
 
